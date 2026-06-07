@@ -541,6 +541,14 @@
   </script>
   <script>
     const PASS='088485',KEY='tt_portfolio_v1';
+    const defaultWorks=[
+      {id:'d1',def:true,cat:'Marketing Automation',img:'work-01.png',title:'ระบบ Google Sheets + Apps Script Automation',desc:'พัฒนาระบบเชื่อมโยงข้อมูลอัตโนมัติระหว่างฐานข้อมูลลูกค้า ความคืบหน้างาน และแดชบอร์ดสรุปผล พร้อมตั้ง Trigger ดึง/อัปเดตข้อมูลแบบเรียลไทม์ และระบบสำรองข้อมูลอัตโนมัติทุกเดือน — งานจริงให้ลูกค้าธุรกิจเครื่องมือวัดสีอุตสาหกรรม'},
+      {id:'d2',def:true,cat:'Content & SEO',img:'work-02.png',title:'บทความ SEO และหน้าสินค้าใหม่บน Microsite',desc:'เขียนบทความ SEO ความยาว 1,500+ คำ พร้อมจัดโครงสร้าง H2/H3, Meta Title/Description และออกแบบภาพประกอบ รวมถึงเพิ่ม/อัปเดตหน้าสินค้าใหม่บนเว็บไซต์ลูกค้าให้พร้อมใช้งาน'},
+      {id:'d3',def:true,cat:'Marketing Campaign',img:'work-03.png',title:'แคมเปญส่งเสริมการขายแบบ Multi-channel',desc:'วางแผนและดำเนินแคมเปญโปรโมตสินค้าครบวงจร ตั้งแต่เตรียม/Clean ข้อมูลลูกค้า ออกแบบสื่อประชาสัมพันธ์ ส่ง Mailmerge บรอดแคสต์ผ่าน LINE และโพสต์ Facebook เพื่อกระตุ้นยอดขาย'},
+      {id:'d4',def:true,cat:'Marketing Automation',img:'work-04.png',title:'ระบบ Sales Automation บน Google Sheets',desc:'ออกแบบระบบเชื่อมโยงฐานข้อมูลลูกค้าและความคืบหน้างานอัตโนมัติ สร้างหน้าแดชบอร์ดสรุปภาพรวม พร้อมระบบสำรองข้อมูลอัตโนมัติ และดูแลแก้ไขปัญหาการใช้งานหลังส่งมอบ'},
+      {id:'d5',def:true,cat:'Sales Tech / Automation',img:'work-05.png',title:'ระบบแจ้งเตือน Follow-up ผ่าน LINE อัตโนมัติ',desc:'พัฒนาระบบตรวจสอบรายการติดตามงานจาก Google Sheet แยกงาน Overdue และ This Week พร้อมส่งแจ้งเตือนอัตโนมัติเข้ากลุ่ม LINE ของทีมขาย แสดงชื่อบริษัท ผู้รับผิดชอบ และวันนัดหมาย'},
+      {id:'d6',def:true,cat:'Marketing Automation',img:'work-06.png',title:'ระบบซิงค์ตารางนัดหมาย Sheets ↔ Google Calendar',desc:'เชื่อมโยงข้อมูลการนัดหมายลูกค้าจาก Google Sheets ไปยัง Google Calendar แบบเรียลไทม์ ช่วยให้ทีมขายดูตารางนัดหมายและบริหารเวลาติดต่อลูกค้าได้สะดวกคล่องตัวขึ้น'}
+    ];
     let isAdmin=false;
     const $=id=>document.getElementById(id);
     const loginModal=$('loginModal'),addModal=$('addModal');
@@ -598,17 +606,19 @@
     function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]}}
     function save(a){localStorage.setItem(KEY,JSON.stringify(a))}
     function renderPortfolio(){
-      const works=load();
+      const works=defaultWorks.concat(load());
       grid.querySelectorAll('.portfolio-card').forEach(c=>c.remove());
       empty.style.display=works.length?'none':'';
       works.forEach(w=>{
         const c=document.createElement('div');
         c.className='portfolio-card';
-        c.innerHTML='<img src="'+w.img+'" alt="'+w.title+'" loading="lazy"><div class="portfolio-card-body"><div class="portfolio-card-cat">'+w.cat+'</div><div class="portfolio-card-title">'+w.title+'</div>'+(w.desc?'<div class="portfolio-card-desc">'+w.desc+'</div>':'')+'</div><button class="portfolio-delete-btn" title="ลบ">✕</button>';
-        c.querySelector('.portfolio-delete-btn').addEventListener('click',()=>{
-          if(!confirm('ลบผลงานนี้?'))return;
-          save(load().filter(x=>x.id!==w.id));renderPortfolio();
-        });
+        c.innerHTML='<img src="'+w.img+'" alt="'+w.title+'" loading="lazy"><div class="portfolio-card-body"><div class="portfolio-card-cat">'+w.cat+'</div><div class="portfolio-card-title">'+w.title+'</div>'+(w.desc?'<div class="portfolio-card-desc">'+w.desc+'</div>':'')+'</div>'+(w.def?'':'<button class="portfolio-delete-btn" title="ลบ">✕</button>');
+        if(!w.def){
+          c.querySelector('.portfolio-delete-btn').addEventListener('click',()=>{
+            if(!confirm('ลบผลงานนี้?'))return;
+            save(load().filter(x=>x.id!==w.id));renderPortfolio();
+          });
+        }
         grid.appendChild(c);
       });
     }
