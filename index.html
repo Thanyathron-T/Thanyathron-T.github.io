@@ -215,6 +215,16 @@
     .lb-next{right:20px}
     .lb-counter{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.65);font-size:14px;font-weight:600;font-family:'Sarabun','Inter',sans-serif}
     .portfolio-card{cursor:pointer!important}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .hero-text>*{animation:fadeUp 0.7s ease forwards}
+    .eyebrow{animation-delay:0.1s}
+    .hero-text h1{animation-delay:0.2s}
+    .title-th{animation-delay:0.35s}
+    .hero-text .subtitle{animation-delay:0.45s}
+    .hero-btns{animation-delay:0.55s}
+    .hero-visual{animation:fadeUp 0.8s 0.3s ease forwards}
+    .scroll-down{animation:fadeUp 0.5s 0.7s ease forwards}
   </style>
 </head>
 <body>
@@ -536,14 +546,6 @@
 
   <script>
     gsap.registerPlugin(ScrollTrigger);
-    const tl=gsap.timeline({defaults:{ease:"power3.out"}});
-    tl.from(".eyebrow",{opacity:0,y:30,duration:0.6,delay:0.2})
-      .from(".hero-text h1",{opacity:0,y:30,duration:0.8},"-=0.3")
-      .from(".title-th",{opacity:0,y:30,duration:0.5},"-=0.4")
-      .from(".hero-text .subtitle",{opacity:0,y:30,duration:0.6},"-=0.4")
-      .from(".hero-btns",{opacity:0,y:30,duration:0.5},"-=0.3")
-      .from(".hero-visual",{opacity:0,x:40,duration:0.8,ease:"power2.out"},"-=0.5")
-      .from(".scroll-down",{opacity:0,y:30,duration:0.4},"-=0.2");
     const hero=document.querySelector(".hero");
     hero.addEventListener("mousemove",(e)=>{
       const x=(e.clientX/window.innerWidth-0.5)*2,y=(e.clientY/window.innerHeight-0.5)*2;
