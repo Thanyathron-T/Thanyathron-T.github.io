@@ -536,16 +536,14 @@
 
   <script>
     gsap.registerPlugin(ScrollTrigger);
-    gsap.set([".eyebrow",".hero-text h1",".title-th",".hero-text .subtitle",".hero-btns",".scroll-down"],{opacity:0,y:30});
-    gsap.set(".hero-visual",{opacity:0,x:40});
     const tl=gsap.timeline({defaults:{ease:"power3.out"}});
-    tl.to(".eyebrow",{opacity:1,y:0,duration:0.6,delay:0.2})
-      .to(".hero-text h1",{opacity:1,y:0,duration:0.8},"-=0.3")
-      .to(".title-th",{opacity:1,y:0,duration:0.5},"-=0.4")
-      .to(".hero-text .subtitle",{opacity:1,y:0,duration:0.6},"-=0.4")
-      .to(".hero-btns",{opacity:1,y:0,duration:0.5},"-=0.3")
-      .to(".hero-visual",{opacity:1,x:0,duration:0.8,ease:"power2.out"},"-=0.5")
-      .to(".scroll-down",{opacity:1,y:0,duration:0.4},"-=0.2");
+    tl.from(".eyebrow",{opacity:0,y:30,duration:0.6,delay:0.2})
+      .from(".hero-text h1",{opacity:0,y:30,duration:0.8},"-=0.3")
+      .from(".title-th",{opacity:0,y:30,duration:0.5},"-=0.4")
+      .from(".hero-text .subtitle",{opacity:0,y:30,duration:0.6},"-=0.4")
+      .from(".hero-btns",{opacity:0,y:30,duration:0.5},"-=0.3")
+      .from(".hero-visual",{opacity:0,x:40,duration:0.8,ease:"power2.out"},"-=0.5")
+      .from(".scroll-down",{opacity:0,y:30,duration:0.4},"-=0.2");
     const hero=document.querySelector(".hero");
     hero.addEventListener("mousemove",(e)=>{
       const x=(e.clientX/window.innerWidth-0.5)*2,y=(e.clientY/window.innerHeight-0.5)*2;
@@ -553,8 +551,6 @@
       gsap.to(".hero-shapes-mid",{x:x*20,y:y*10,duration:0.9});
       gsap.to(".hero .container",{x:x*7,y:y*4,duration:0.9});
     });
-    gsap.set(".stat-card",{opacity:0,y:40});
-    ScrollTrigger.batch(".stat-card",{start:"top 85%",onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:0.6,stagger:0.1,ease:"power2.out"})});
     gsap.set(".skill-card",{opacity:0,y:55,rotateX:15});
     ScrollTrigger.batch(".skill-card",{start:"top 85%",onEnter:b=>gsap.to(b,{opacity:1,y:0,rotateX:0,duration:0.8,stagger:0.11,ease:"power2.out"})});
     gsap.set(".exp-card",{opacity:0,x:-30});
