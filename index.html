@@ -79,6 +79,8 @@
     .experience{background:white}
     .exp-timeline{position:relative;margin-top:56px}
     .exp-timeline::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--pink),var(--coral),transparent)}
+    .exp-concurrent-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--pink),var(--coral));color:white;border-radius:100px;padding:5px 16px;font-size:11px;font-weight:700;margin-left:70px;margin-bottom:10px;letter-spacing:0.04em;box-shadow:0 2px 8px rgba(232,54,106,0.25)}
+    .exp-concurrent{position:relative}
     .exp-item{position:relative;padding-left:70px;padding-bottom:48px}
     .exp-dot{position:absolute;left:10px;top:6px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--coral));border:3px solid white;box-shadow:0 0 0 3px rgba(232,54,106,0.15)}
     .exp-card{background:white;border-radius:20px;padding:28px 32px;border:1px solid var(--card-border);transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s}
@@ -115,7 +117,7 @@
     .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;min-height:120px}
     .portfolio-card{background:white;border-radius:20px;overflow:hidden;border:1px solid var(--card-border);transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;position:relative}
     .portfolio-card:hover{transform:translateY(-6px);border-color:var(--pink);box-shadow:0 12px 36px rgba(232,54,106,0.12)}
-    .portfolio-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+    .portfolio-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
     .portfolio-card-body{padding:18px 20px}
     .portfolio-card-cat{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);margin-bottom:6px}
     .portfolio-card-title{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px}
@@ -282,15 +284,13 @@
             <div class="about-row"><div class="about-row-icon">🎂</div><span class="about-row-label">วันเกิด</span><span class="about-row-val">4 มกราคม 2536 (33 ปี)</span></div>
             <div class="about-row"><div class="about-row-icon">🎓</div><span class="about-row-label">การศึกษา</span><span class="about-row-val">วท.บ. เคมี — ม.รามคำแหง</span></div>
             <div class="about-row"><div class="about-row-icon">📍</div><span class="about-row-label">ที่อยู่</span><span class="about-row-val">กรุงเทพฯ (อ่อนนุช 67)</span></div>
-            <div class="about-row"><div class="about-row-icon">🎮</div><span class="about-row-label">Hobbies</span><span class="about-row-val">ROV, การ์ตูน, ทำอาหาร</span></div>
+            <div class="about-row"><div class="about-row-icon">🎮</div><span class="about-row-label">Hobbies</span><span class="about-row-val">เล่นเกม, อ่านการ์ตูน, ทำอาหาร, ช่วงกำลังสนใจศึกษา AI agent team</span></div>
           </div>
         </div>
         <div>
-          <div class="about-stats">
-            <div class="stat-card"><div class="stat-num">6+</div><div class="stat-label">ปีประสบการณ์</div></div>
-            <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">บริษัทที่ผ่านมา</div></div>
-            <div class="stat-card"><div class="stat-num">B2B</div><div class="stat-label">& B2C Expert</div></div>
-            <div class="stat-card"><div class="stat-num">AI</div><div class="stat-label">Workflow Driven</div></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <span class="tag">⏱ 6+ ปีประสบการณ์</span>
+            <span class="tag">🤖 AI Workflow Driven</span>
           </div>
         </div>
       </div>
@@ -303,6 +303,8 @@
       <h2 class="section-title">ประสบการณ์การทำงาน</h2>
       <div class="exp-timeline">
 
+        <div class="exp-concurrent">
+        <div class="exp-concurrent-badge">⚡ ทำงานพร้อมกัน ม.ค. – พ.ค. 2568</div>
         <div class="exp-item">
           <div class="exp-dot"></div>
           <div class="exp-card">
@@ -332,10 +334,10 @@
           <div class="exp-card">
             <div class="exp-header">
               <div class="exp-role">Online Content Marketing & Sales</div>
-              <div class="exp-period">ธ.ค. 2565 – ม.ค. 2568</div>
+              <div class="exp-period">ธ.ค. 2565 – พ.ค. 2568</div>
             </div>
             <div class="exp-company">Daikifood Co., Ltd</div>
-            <div class="exp-duration">2 ปี 2 เดือน · เงินเดือน 35,000 ฿</div>
+            <div class="exp-duration">2 ปี 6 เดือน · เงินเดือน 35,000 ฿</div>
             <ul class="exp-list">
               <li>วางแผนและจัดการกลยุทธ์การตลาดดิจิทัลทั้งออนไลน์และออฟไลน์</li>
               <li>สร้างคอนเทนต์เพื่อสร้าง Brand Awareness บน Social Media ทุกช่องทาง</li>
@@ -349,6 +351,7 @@
             </div>
           </div>
         </div>
+        </div><!-- end exp-concurrent -->
 
         <div class="exp-item">
           <div class="exp-dot"></div>
@@ -571,7 +574,7 @@
     const defaultWorks=[
       {id:'p1',def:true,cat:'E-Commerce',
        img:'daiki-ecom.jpg',
-       imgs:['daiki-ecom.jpg','daiki-ecom-owner.jpg','daiki-dashboard.jpg','daiki-dashboard-ads.jpg','exp-daikifood.jpg'],
+       imgs:['daiki-ecom.jpg','daiki-dashboard.jpg','daiki-dashboard-ads.jpg','exp-daikifood.jpg'],
        title:'E-Commerce Management — Daikifood',
        desc:'บริหาร Shopee & Lazada ครบวงจร วิเคราะห์ยอดขาย กำหนดราคา B2B/B2C ดูแล Ads Dashboard และรายงานผลต่อผู้บริหาร'},
       {id:'p2',def:true,cat:'Content Design',
@@ -596,13 +599,13 @@
        desc:'ออกแบบสื่อ Branding ครบชุด ทั้ง Catalog สินค้า, นามบัตร และ Artwork ประกอบโฆษณา ให้ Brand Identity แข็งแกร่งและสม่ำเสมอ'},
       {id:'p6',def:true,cat:'SEO & Content',
        img:'seo-content.jpg',
-       imgs:['seo-content.jpg','seo-blog.jpg','exp-centasia.jpg'],
+       imgs:['seo-content.jpg','seo-blog.jpg','Blog TH ZH.jpg'],
        title:'SEO Content & WordPress Management',
-       desc:'เขียน SEO Article ความยาว 1,500+ คำ พร้อมจัดโครงสร้าง On-page SEO และอัปเดตหน้าสินค้าบนเว็บ WordPress ให้ติดอันดับ'},
+       desc:'เขียน SEO Article ความยาว 1,500+ คำ พร้อมจัดโครงสร้าง On-page SEO และอัปเดตหน้าสินค้าบนเว็บ WordPress ให้ติดอันดับ — <a href="https://thecolormeasurement.com/blog/" target="_blank" style="color:var(--pink)">ดูงานเขียนบทความเพิ่มเติม ↗</a>'},
       {id:'p7',def:true,cat:'Marketing Automation',
        img:'crm.jpg',
        imgs:['crm.jpg','crm-2.jpg','social-crm.jpg','dashboard.jpg'],
-       title:'Marketing Automation & Mini CRM',
+       title:'Marketing Automation & Mini CRM & dashboard design',
        desc:'พัฒนาระบบ CRM บน Google Sheets + Apps Script เชื่อม LINE Notify และ Google Calendar ให้ทีมติดตามลูกค้าแบบอัตโนมัติ'},
       {id:'p8',def:true,cat:'Freelance',
        img:'freelance-ecom.jpg',
@@ -613,12 +616,7 @@
        img:'freelance-company.jpg',
        imgs:['freelance-company.jpg','freelance-plan.jpg'],
        title:'Freelance — Company Profile & Marketing Plan',
-       desc:'จัดทำ Company Profile และแผนการตลาดให้ SME ครอบคลุมการวิเคราะห์ตลาด กำหนดกลยุทธ์ และ Action Plan ที่นำไปใช้ได้จริง'},
-      {id:'p10',def:true,cat:'Marketing Campaign',
-       img:'exp-oshinei.jpg',
-       imgs:['exp-oshinei.jpg'],
-       title:'Marketing Campaign Management — Oshinei/Daikifood',
-       desc:'วางแผนและดำเนินแคมเปญการตลาดสำหรับแบรนด์ Oshinei และ Daikifood ครอบคลุม Social Media, Promotion และการวิเคราะห์ผล'}
+       desc:'จัดทำ Company Profile และแผนการตลาดให้ SME ครอบคลุมการวิเคราะห์ตลาด กำหนดกลยุทธ์ และ Action Plan ที่นำไปใช้ได้จริง'}
     ];
     let isAdmin=false,lbImgs=[],lbIdx=0;
     const $=id=>document.getElementById(id);
