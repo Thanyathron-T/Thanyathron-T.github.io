@@ -125,22 +125,6 @@
     .portfolio-delete-btn{display:none;position:absolute;top:10px;right:10px;background:rgba(232,54,106,0.9);color:white;border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;align-items:center;justify-content:center;font-weight:700}
     .admin-mode .portfolio-delete-btn{display:flex}
     .portfolio-delete-btn:hover{background:#C42B58}
-    /* PORTFOLIO FILTER */
-    .portfolio-filter{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
-    .filter-btn{padding:8px 20px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--card-border);background:white;color:var(--text-muted);cursor:pointer;font-family:inherit;transition:all 0.2s}
-    .filter-btn:hover,.filter-btn.active{background:linear-gradient(135deg,var(--pink),var(--coral));color:white;border-color:transparent}
-    /* LIGHTBOX */
-    .lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:500;align-items:center;justify-content:center}
-    .lb-overlay.open{display:flex}
-    .lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,0.5);user-select:none}
-    .lb-close{position:fixed;top:20px;right:28px;color:white;font-size:36px;cursor:pointer;line-height:1;opacity:0.8;transition:opacity 0.2s;background:none;border:none;z-index:501;font-family:inherit}
-    .lb-close:hover{opacity:1}
-    .lb-arrow{position:fixed;top:50%;transform:translateY(-50%);color:white;font-size:28px;cursor:pointer;opacity:0.75;transition:all 0.2s;background:rgba(255,255,255,0.12);border:none;border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;z-index:501;font-family:inherit}
-    .lb-arrow:hover{opacity:1;background:rgba(255,255,255,0.22)}
-    .lb-prev{left:20px}
-    .lb-next{right:20px}
-    .lb-counter{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.65);font-size:14px;font-weight:600;font-family:'Sarabun','Inter',sans-serif}
-    .portfolio-card{cursor:pointer!important}
 
     /* CLOSING CTA */
     .closing-cta{background:var(--navy);padding:120px 40px;text-align:center;position:relative;overflow:hidden}
@@ -214,6 +198,21 @@
       .contact-info{gap:18px;flex-direction:column;align-items:center}
       .admin-toolbar{right:auto;left:50%;transform:translateX(-50%);bottom:90px;white-space:nowrap}
     }
+
+    .portfolio-filter{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
+    .filter-btn{padding:8px 20px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--card-border);background:white;color:var(--text-muted);cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .filter-btn:hover,.filter-btn.active{background:linear-gradient(135deg,var(--pink),var(--coral));color:white;border-color:transparent}
+    .lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:500;align-items:center;justify-content:center}
+    .lb-overlay.open{display:flex}
+    .lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,0.5);user-select:none}
+    .lb-close{position:fixed;top:20px;right:28px;color:white;font-size:36px;cursor:pointer;line-height:1;opacity:0.8;transition:opacity 0.2s;background:none;border:none;z-index:501;font-family:inherit}
+    .lb-close:hover{opacity:1}
+    .lb-arrow{position:fixed;top:50%;transform:translateY(-50%);color:white;font-size:28px;cursor:pointer;opacity:0.75;transition:all 0.2s;background:rgba(255,255,255,0.12);border:none;border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;z-index:501;font-family:inherit}
+    .lb-arrow:hover{opacity:1;background:rgba(255,255,255,0.22)}
+    .lb-prev{left:20px}
+    .lb-next{right:20px}
+    .lb-counter{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.65);font-size:14px;font-weight:600;font-family:'Sarabun','Inter',sans-serif}
+    .portfolio-card{cursor:pointer!important}
   </style>
 </head>
 <body>
@@ -443,7 +442,7 @@
         <button class="filter-btn" data-cat="AI Design">AI Design</button>
         <button class="filter-btn" data-cat="LINE OA">LINE OA</button>
         <button class="filter-btn" data-cat="Marketing Automation">Marketing Automation</button>
-        <button class="filter-btn" data-cat="SEO & Content">SEO &amp; Content</button>
+        <button class="filter-btn" data-cat="SEO &amp; Content">SEO &amp; Content</button>
         <button class="filter-btn" data-cat="Marketing Campaign">Marketing Campaign</button>
         <button class="filter-btn" data-cat="Freelance">Freelance</button>
       </div>
@@ -586,4 +585,153 @@
        desc:'สร้างสื่อโฆษณาด้วย AI สำหรับแบรนด์ Cosmetic และเครื่องมือวัดสีอุตสาหกรรม ลดต้นทุนออกแบบและเพิ่มความเร็วในการผลิต Content'},
       {id:'p4',def:true,cat:'LINE OA',
        img:'richmenu.jpg',
-       imgs:['richmenu.jpg','richmenu
+       imgs:['richmenu.jpg','richmenu-cpc.jpg','richmenu-iie.jpg','line-oa.jpg'],
+       title:'LINE OA — Rich Menu & Card Message Design',
+       desc:'ออกแบบ Rich Menu, Broadcast Message และ Card Content บน LINE OA ให้ตรงกลุ่มเป้าหมาย เพิ่ม Engagement และลด Unblock Rate'},
+      {id:'p5',def:true,cat:'Content Design',
+       img:'social-design.jpg',
+       imgs:['social-design.jpg','design-catalog.jpg','design-catalog-2.jpg','design-bizcard.jpg'],
+       title:'Visual Design — Catalog & Branding Materials',
+       desc:'ออกแบบสื่อ Branding ครบชุด ทั้ง Catalog สินค้า, นามบัตร และ Artwork ประกอบโฆษณา ให้ Brand Identity แข็งแกร่งและสม่ำเสมอ'},
+      {id:'p6',def:true,cat:'SEO & Content',
+       img:'seo-content.jpg',
+       imgs:['seo-content.jpg','seo-blog.jpg','exp-centasia.jpg'],
+       title:'SEO Content & WordPress Management',
+       desc:'เขียน SEO Article ความยาว 1,500+ คำ พร้อมจัดโครงสร้าง On-page SEO และอัปเดตหน้าสินค้าบนเว็บ WordPress ให้ติดอันดับ'},
+      {id:'p7',def:true,cat:'Marketing Automation',
+       img:'crm.jpg',
+       imgs:['crm.jpg','crm-2.jpg','social-crm.jpg','dashboard.jpg'],
+       title:'Marketing Automation & Mini CRM',
+       desc:'พัฒนาระบบ CRM บน Google Sheets + Apps Script เชื่อม LINE Notify และ Google Calendar ให้ทีมติดตามลูกค้าแบบอัตโนมัติ'},
+      {id:'p8',def:true,cat:'Freelance',
+       img:'freelance-ecom.jpg',
+       imgs:['freelance-ecom.jpg','freelance-ecom-2.jpg','freelance-ecom-3.jpg','freelance-ecom-4.jpg','freelance-ecom-5.jpg'],
+       title:'Freelance — E-Commerce Setup & Management',
+       desc:'รับงาน Freelance ดูแลร้านค้า Shopee/Lazada ตั้งแต่ตั้งร้าน ออกแบบ Listing ถ่ายรูปสินค้า ทำโปรโมชัน และรายงานยอดขาย'},
+      {id:'p9',def:true,cat:'Freelance',
+       img:'freelance-company.jpg',
+       imgs:['freelance-company.jpg','freelance-plan.jpg'],
+       title:'Freelance — Company Profile & Marketing Plan',
+       desc:'จัดทำ Company Profile และแผนการตลาดให้ SME ครอบคลุมการวิเคราะห์ตลาด กำหนดกลยุทธ์ และ Action Plan ที่นำไปใช้ได้จริง'},
+      {id:'p10',def:true,cat:'Marketing Campaign',
+       img:'exp-oshinei.jpg',
+       imgs:['exp-oshinei.jpg'],
+       title:'Marketing Campaign Management — Oshinei/Daikifood',
+       desc:'วางแผนและดำเนินแคมเปญการตลาดสำหรับแบรนด์ Oshinei และ Daikifood ครอบคลุม Social Media, Promotion และการวิเคราะห์ผล'}
+    ];
+    let isAdmin=false,lbImgs=[],lbIdx=0;
+    const $=id=>document.getElementById(id);
+    const loginModal=$('loginModal'),addModal=$('addModal');
+    const adminFab=$('adminFab'),toolbar=$('adminToolbar'),grid=$('portfolioGrid'),empty=$('portfolioEmpty');
+    let activeFilter='all';
+    renderPortfolio();
+    // Filter buttons
+    document.getElementById('portfolioFilter').addEventListener('click',e=>{
+      const btn=e.target.closest('.filter-btn');
+      if(!btn)return;
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter=btn.dataset.cat;
+      renderPortfolio();
+    });
+    adminFab.addEventListener('click',()=>{
+      if(isAdmin){toolbar.classList.toggle('open')}
+      else{$('passwordInput').value='';$('loginError').classList.remove('show');loginModal.classList.add('open');setTimeout(()=>$('passwordInput').focus(),100)}
+    });
+    $('btnLogin').addEventListener('click',doLogin);
+    $('passwordInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+    function doLogin(){
+      if($('passwordInput').value===PASS){
+        isAdmin=true;loginModal.classList.remove('open');toolbar.classList.add('open');
+        document.body.classList.add('admin-mode');adminFab.textContent='✏️';
+      }else{$('loginError').classList.add('show');$('passwordInput').select()}
+    }
+    $('btnLoginCancel').addEventListener('click',()=>loginModal.classList.remove('open'));
+    $('btnLogout').addEventListener('click',()=>{
+      isAdmin=false;toolbar.classList.remove('open');document.body.classList.remove('admin-mode');adminFab.textContent='⚙';
+    });
+    $('btnAddWork').addEventListener('click',()=>{
+      $('workTitle').value='';$('workDesc').value='';$('fileInput').value='';
+      $('imgPreview').classList.remove('show');$('addError').classList.remove('show');
+      currentB64=null;addModal.classList.add('open');
+    });
+    let currentB64=null;
+    $('uploadArea').addEventListener('click',()=>$('fileInput').click());
+    $('fileInput').addEventListener('change',function(){
+      if(!this.files[0])return;
+      const r=new FileReader();
+      r.onload=e=>{currentB64=e.target.result;$('imgPreview').src=currentB64;$('imgPreview').classList.add('show')};
+      r.readAsDataURL(this.files[0]);
+    });
+    const ua=$('uploadArea');
+    ua.addEventListener('dragover',e=>{e.preventDefault();ua.style.borderColor='var(--pink)'});
+    ua.addEventListener('dragleave',()=>{ua.style.borderColor=''});
+    ua.addEventListener('drop',e=>{
+      e.preventDefault();ua.style.borderColor='';
+      const f=e.dataTransfer.files[0];
+      if(!f||!f.type.startsWith('image/'))return;
+      const r=new FileReader();
+      r.onload=ev=>{currentB64=ev.target.result;$('imgPreview').src=currentB64;$('imgPreview').classList.add('show')};
+      r.readAsDataURL(f);
+    });
+    $('btnSaveWork').addEventListener('click',()=>{
+      const t=$('workTitle').value.trim();
+      if(!t||!currentB64){$('addError').classList.add('show');return}
+      const works=load();
+      works.unshift({id:Date.now(),cat:$('workCat').value,title:t,desc:$('workDesc').value.trim(),img:currentB64});
+      save(works);renderPortfolio();addModal.classList.remove('open');
+    });
+    $('btnAddCancel').addEventListener('click',()=>addModal.classList.remove('open'));
+    [loginModal,addModal].forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
+    function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]}}
+    function save(a){localStorage.setItem(KEY,JSON.stringify(a))}
+    function renderPortfolio(){
+      const all=defaultWorks.concat(load());
+      const works=activeFilter==='all'?all:all.filter(w=>w.cat===activeFilter);
+      grid.querySelectorAll('.portfolio-card').forEach(c=>c.remove());
+      empty.style.display=works.length?'none':'';
+      works.forEach(w=>{
+        const c=document.createElement('div');
+        c.className='portfolio-card';
+        c.innerHTML='<img src="'+w.img+'" alt="'+w.title+'" loading="lazy"><div class="portfolio-card-body"><div class="portfolio-card-cat">'+w.cat+'</div><div class="portfolio-card-title">'+w.title+'</div>'+(w.desc?'<div class="portfolio-card-desc">'+w.desc+'</div>':'')+'</div>'+(isAdmin&&!w.def?'<button class="portfolio-delete-btn" title="ลบ">✕</button>':'');
+        const imgArr=w.imgs||[w.img];
+        c.addEventListener('click',e=>{
+          if(e.target.classList.contains('portfolio-delete-btn'))return;
+          openLightbox(imgArr,0);
+        });
+        if(isAdmin&&!w.def){
+          c.querySelector('.portfolio-delete-btn').addEventListener('click',e=>{
+            e.stopPropagation();
+            if(!confirm('ลบผลงานนี้?'))return;
+            save(load().filter(x=>x.id!==w.id));renderPortfolio();
+          });
+        }
+        grid.appendChild(c);
+      });
+    }
+    // Lightbox
+    function openLightbox(imgs,idx){
+      lbImgs=imgs;lbIdx=idx;updateLb();
+      $('lbOverlay').classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function closeLb(){$('lbOverlay').classList.remove('open');document.body.style.overflow='';}
+    function updateLb(){
+      $('lbImg').src=lbImgs[lbIdx];
+      $('lbCounter').textContent=(lbImgs.length>1)?(lbIdx+1)+' / '+lbImgs.length:'';
+      $('lbPrev').style.display=lbImgs.length>1?'flex':'none';
+      $('lbNext').style.display=lbImgs.length>1?'flex':'none';
+    }
+    $('lbClose').addEventListener('click',closeLb);
+    $('lbOverlay').addEventListener('click',e=>{if(e.target===$('lbOverlay'))closeLb();});
+    $('lbPrev').addEventListener('click',e=>{e.stopPropagation();lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;updateLb();});
+    $('lbNext').addEventListener('click',e=>{e.stopPropagation();lbIdx=(lbIdx+1)%lbImgs.length;updateLb();});
+    document.addEventListener('keydown',e=>{
+      if(!$('lbOverlay').classList.contains('open'))return;
+      if(e.key==='Escape')closeLb();
+      if(e.key==='ArrowLeft'){lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;updateLb();}
+      if(e.key==='ArrowRight'){lbIdx=(lbIdx+1)%lbImgs.length;updateLb();}
+    });
+  </script>
+</body>
+</html>
