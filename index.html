@@ -125,6 +125,22 @@
     .portfolio-delete-btn{display:none;position:absolute;top:10px;right:10px;background:rgba(232,54,106,0.9);color:white;border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;align-items:center;justify-content:center;font-weight:700}
     .admin-mode .portfolio-delete-btn{display:flex}
     .portfolio-delete-btn:hover{background:#C42B58}
+    /* PORTFOLIO FILTER */
+    .portfolio-filter{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
+    .filter-btn{padding:8px 20px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--card-border);background:white;color:var(--text-muted);cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .filter-btn:hover,.filter-btn.active{background:linear-gradient(135deg,var(--pink),var(--coral));color:white;border-color:transparent}
+    /* LIGHTBOX */
+    .lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:500;align-items:center;justify-content:center}
+    .lb-overlay.open{display:flex}
+    .lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,0.5);user-select:none}
+    .lb-close{position:fixed;top:20px;right:28px;color:white;font-size:36px;cursor:pointer;line-height:1;opacity:0.8;transition:opacity 0.2s;background:none;border:none;z-index:501;font-family:inherit}
+    .lb-close:hover{opacity:1}
+    .lb-arrow{position:fixed;top:50%;transform:translateY(-50%);color:white;font-size:28px;cursor:pointer;opacity:0.75;transition:all 0.2s;background:rgba(255,255,255,0.12);border:none;border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;z-index:501;font-family:inherit}
+    .lb-arrow:hover{opacity:1;background:rgba(255,255,255,0.22)}
+    .lb-prev{left:20px}
+    .lb-next{right:20px}
+    .lb-counter{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.65);font-size:14px;font-weight:600;font-family:'Sarabun','Inter',sans-serif}
+    .portfolio-card{cursor:pointer!important}
 
     /* CLOSING CTA */
     .closing-cta{background:var(--navy);padding:120px 40px;text-align:center;position:relative;overflow:hidden}
@@ -420,6 +436,17 @@
       <div class="section-eyebrow">Portfolio</div>
       <h2 class="section-title">ตัวอย่างผลงาน</h2>
       <p class="section-sub">ผลงาน Content, AI Design และ Digital Marketing ที่ผ่านมา</p>
+      <div class="portfolio-filter" id="portfolioFilter">
+        <button class="filter-btn active" data-cat="all">ทั้งหมด</button>
+        <button class="filter-btn" data-cat="E-Commerce">E-Commerce</button>
+        <button class="filter-btn" data-cat="Content Design">Content Design</button>
+        <button class="filter-btn" data-cat="AI Design">AI Design</button>
+        <button class="filter-btn" data-cat="LINE OA">LINE OA</button>
+        <button class="filter-btn" data-cat="Marketing Automation">Marketing Automation</button>
+        <button class="filter-btn" data-cat="SEO & Content">SEO &amp; Content</button>
+        <button class="filter-btn" data-cat="Marketing Campaign">Marketing Campaign</button>
+        <button class="filter-btn" data-cat="Freelance">Freelance</button>
+      </div>
       <div class="portfolio-grid" id="portfolioGrid">
         <div class="portfolio-empty" id="portfolioEmpty">
           <div class="portfolio-empty-icon">🎨</div>
@@ -542,86 +569,21 @@
   <script>
     const PASS='088485',KEY='tt_portfolio_v1';
     const defaultWorks=[
-      {id:'d1',def:true,cat:'Marketing Automation',img:'work-01.png',title:'ระบบ Google Sheets + Apps Script Automation',desc:'พัฒนาระบบเชื่อมโยงข้อมูลอัตโนมัติระหว่างฐานข้อมูลลูกค้า ความคืบหน้างาน และแดชบอร์ดสรุปผล พร้อมตั้ง Trigger ดึง/อัปเดตข้อมูลแบบเรียลไทม์ และระบบสำรองข้อมูลอัตโนมัติทุกเดือน — งานจริงให้ลูกค้าธุรกิจเครื่องมือวัดสีอุตสาหกรรม'},
-      {id:'d2',def:true,cat:'Content & SEO',img:'work-02.png',title:'บทความ SEO และหน้าสินค้าใหม่บน Microsite',desc:'เขียนบทความ SEO ความยาว 1,500+ คำ พร้อมจัดโครงสร้าง H2/H3, Meta Title/Description และออกแบบภาพประกอบ รวมถึงเพิ่ม/อัปเดตหน้าสินค้าใหม่บนเว็บไซต์ลูกค้าให้พร้อมใช้งาน'},
-      {id:'d3',def:true,cat:'Marketing Campaign',img:'work-03.png',title:'แคมเปญส่งเสริมการขายแบบ Multi-channel',desc:'วางแผนและดำเนินแคมเปญโปรโมตสินค้าครบวงจร ตั้งแต่เตรียม/Clean ข้อมูลลูกค้า ออกแบบสื่อประชาสัมพันธ์ ส่ง Mailmerge บรอดแคสต์ผ่าน LINE และโพสต์ Facebook เพื่อกระตุ้นยอดขาย'},
-      {id:'d4',def:true,cat:'Marketing Automation',img:'work-04.png',title:'ระบบ Sales Automation บน Google Sheets',desc:'ออกแบบระบบเชื่อมโยงฐานข้อมูลลูกค้าและความคืบหน้างานอัตโนมัติ สร้างหน้าแดชบอร์ดสรุปภาพรวม พร้อมระบบสำรองข้อมูลอัตโนมัติ และดูแลแก้ไขปัญหาการใช้งานหลังส่งมอบ'},
-      {id:'d5',def:true,cat:'Sales Tech / Automation',img:'work-05.png',title:'ระบบแจ้งเตือน Follow-up ผ่าน LINE อัตโนมัติ',desc:'พัฒนาระบบตรวจสอบรายการติดตามงานจาก Google Sheet แยกงาน Overdue และ This Week พร้อมส่งแจ้งเตือนอัตโนมัติเข้ากลุ่ม LINE ของทีมขาย แสดงชื่อบริษัท ผู้รับผิดชอบ และวันนัดหมาย'},
-      {id:'d6',def:true,cat:'Marketing Automation',img:'work-06.png',title:'ระบบซิงค์ตารางนัดหมาย Sheets ↔ Google Calendar',desc:'เชื่อมโยงข้อมูลการนัดหมายลูกค้าจาก Google Sheets ไปยัง Google Calendar แบบเรียลไทม์ ช่วยให้ทีมขายดูตารางนัดหมายและบริหารเวลาติดต่อลูกค้าได้สะดวกคล่องตัวขึ้น'}
-    ];
-    let isAdmin=false;
-    const $=id=>document.getElementById(id);
-    const loginModal=$('loginModal'),addModal=$('addModal');
-    const adminFab=$('adminFab'),toolbar=$('adminToolbar'),grid=$('portfolioGrid'),empty=$('portfolioEmpty');
-    renderPortfolio();
-    adminFab.addEventListener('click',()=>{
-      if(isAdmin){toolbar.classList.toggle('open')}
-      else{$('passwordInput').value='';$('loginError').classList.remove('show');loginModal.classList.add('open');setTimeout(()=>$('passwordInput').focus(),100)}
-    });
-    $('btnLogin').addEventListener('click',doLogin);
-    $('passwordInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
-    function doLogin(){
-      if($('passwordInput').value===PASS){
-        isAdmin=true;loginModal.classList.remove('open');toolbar.classList.add('open');
-        document.body.classList.add('admin-mode');adminFab.textContent='✏️';
-      }else{$('loginError').classList.add('show');$('passwordInput').select()}
-    }
-    $('btnLoginCancel').addEventListener('click',()=>loginModal.classList.remove('open'));
-    $('btnLogout').addEventListener('click',()=>{
-      isAdmin=false;toolbar.classList.remove('open');document.body.classList.remove('admin-mode');adminFab.textContent='⚙';
-    });
-    $('btnAddWork').addEventListener('click',()=>{
-      $('workTitle').value='';$('workDesc').value='';$('fileInput').value='';
-      $('imgPreview').classList.remove('show');$('addError').classList.remove('show');
-      currentB64=null;addModal.classList.add('open');
-    });
-    let currentB64=null;
-    $('uploadArea').addEventListener('click',()=>$('fileInput').click());
-    $('fileInput').addEventListener('change',function(){
-      if(!this.files[0])return;
-      const r=new FileReader();
-      r.onload=e=>{currentB64=e.target.result;$('imgPreview').src=currentB64;$('imgPreview').classList.add('show')};
-      r.readAsDataURL(this.files[0]);
-    });
-    const ua=$('uploadArea');
-    ua.addEventListener('dragover',e=>{e.preventDefault();ua.style.borderColor='var(--pink)'});
-    ua.addEventListener('dragleave',()=>{ua.style.borderColor=''});
-    ua.addEventListener('drop',e=>{
-      e.preventDefault();ua.style.borderColor='';
-      const f=e.dataTransfer.files[0];
-      if(!f||!f.type.startsWith('image/'))return;
-      const r=new FileReader();
-      r.onload=ev=>{currentB64=ev.target.result;$('imgPreview').src=currentB64;$('imgPreview').classList.add('show')};
-      r.readAsDataURL(f);
-    });
-    $('btnSaveWork').addEventListener('click',()=>{
-      const t=$('workTitle').value.trim();
-      if(!t||!currentB64){$('addError').classList.add('show');return}
-      const works=load();
-      works.unshift({id:Date.now(),cat:$('workCat').value,title:t,desc:$('workDesc').value.trim(),img:currentB64});
-      save(works);renderPortfolio();addModal.classList.remove('open');
-    });
-    $('btnAddCancel').addEventListener('click',()=>addModal.classList.remove('open'));
-    [loginModal,addModal].forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
-    function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]}}
-    function save(a){localStorage.setItem(KEY,JSON.stringify(a))}
-    function renderPortfolio(){
-      const works=defaultWorks.concat(load());
-      grid.querySelectorAll('.portfolio-card').forEach(c=>c.remove());
-      empty.style.display=works.length?'none':'';
-      works.forEach(w=>{
-        const c=document.createElement('div');
-        c.className='portfolio-card';
-        c.innerHTML='<img src="'+w.img+'" alt="'+w.title+'" loading="lazy"><div class="portfolio-card-body"><div class="portfolio-card-cat">'+w.cat+'</div><div class="portfolio-card-title">'+w.title+'</div>'+(w.desc?'<div class="portfolio-card-desc">'+w.desc+'</div>':'')+'</div>'+(w.def?'':'<button class="portfolio-delete-btn" title="ลบ">✕</button>');
-        if(!w.def){
-          c.querySelector('.portfolio-delete-btn').addEventListener('click',()=>{
-            if(!confirm('ลบผลงานนี้?'))return;
-            save(load().filter(x=>x.id!==w.id));renderPortfolio();
-          });
-        }
-        grid.appendChild(c);
-      });
-    }
-  </script>
-</body>
-</html>
+      {id:'p1',def:true,cat:'E-Commerce',
+       img:'daiki-ecom.jpg',
+       imgs:['daiki-ecom.jpg','daiki-ecom-owner.jpg','daiki-dashboard.jpg','daiki-dashboard-ads.jpg','exp-daikifood.jpg'],
+       title:'E-Commerce Management — Daikifood',
+       desc:'บริหาร Shopee & Lazada ครบวงจร วิเคราะห์ยอดขาย กำหนดราคา B2B/B2C ดูแล Ads Dashboard และรายงานผลต่อผู้บริหาร'},
+      {id:'p2',def:true,cat:'Content Design',
+       img:'social-food.jpg',
+       imgs:['social-food.jpg','social-food-2.jpg','social-food-3.jpg','social-food-4.jpg','social-food-5.jpg'],
+       title:'Social Media Content Design — Food Brand',
+       desc:'ออกแบบและผลิต Artwork + คอนเทนต์ Social Media ธุรกิจอาหาร ครอบคลุม Feed Post, Story และ Promotion Post'},
+      {id:'p3',def:true,cat:'AI Design',
+       img:'social-ai-cosmetic.jpg',
+       imgs:['social-ai-cosmetic.jpg','social-ai-cosmetic-2.jpg','social-ai-science.jpg','ai-banner.jpg'],
+       title:'AI-Generated Design — Cosmetic & Scientific',
+       desc:'สร้างสื่อโฆษณาด้วย AI สำหรับแบรนด์ Cosmetic และเครื่องมือวัดสีอุตสาหกรรม ลดต้นทุนออกแบบและเพิ่มความเร็วในการผลิต Content'},
+      {id:'p4',def:true,cat:'LINE OA',
+       img:'richmenu.jpg',
+       imgs:['richmenu.jpg','richmenu
